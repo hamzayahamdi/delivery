@@ -55,7 +55,7 @@ export function CityDeliveryApp() {
     }
   };
 
-  const predefinedRanges = [
+  const predefinedRanges: { label: string; value: [Date, Date] }[] = [
     { label: "This Month", value: [startOfMonth(new Date()), endOfMonth(new Date())] },
     { label: "Last Month", value: [startOfMonth(subMonths(new Date(), 1)), endOfMonth(subMonths(new Date(), 1))] },
     { label: "This Quarter", value: [startOfQuarter(new Date()), endOfQuarter(new Date())] },
@@ -75,8 +75,8 @@ export function CityDeliveryApp() {
             <div className="flex flex-wrap items-center gap-4">
               <DatePicker
                 selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
+                startDate={startDate || undefined}
+                endDate={endDate || undefined}
                 onChange={(update: [Date | null, Date | null]) => {
                   setDateRange(update);
                 }}
